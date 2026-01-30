@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container py-5">
+  <h1 class="fw-bold">AI Project Scoper</h1>
+  <p class="text-secondary">Describe your idea and get clarifying questions + a rough build plan.</p>
+  <div class="row g-4 mt-2">
+    <div class="col-lg-6">
+      <div class="card shadow-sm border-0">
+        <div class="card-body">
+          <form method="post" class="vstack gap-3">
+            {% csrf_token %}
+            {{ form.idea.label_tag }}
+            {{ form.idea }}
+            <button class="btn btn-primary btn-lg" type="submit">Generate Plan</button>
+            <div class="small text-secondary">
+              Note: you must set <code>OPENAI_API_KEY</code> as an environment variable (local .env or Heroku config var).
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="card shadow-sm border-0">
+        <div class="card-body">
+          <div class="fw-semibold mb-2">AI Result</div>
+          {% if result %}
+            <pre class="result-box">{{ result }}</pre>
+          {% else %}
+            <div class="text-secondary">Submit an idea to see output here.</div>
+          {% endif %}
+          <div class="small text-secondary mt-3">Powered by OpenAI</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

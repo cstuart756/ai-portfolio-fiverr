@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container py-5">
+  <h1 class="fw-bold">Portfolio</h1>
+  <p class="text-secondary">Realistic demos that show how I build AI + automation for business.</p>
+  <div class="row g-3 mt-3">
+    {% for p in projects %}
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm border-0">
+          <div class="card-body">
+            <div class="fw-semibold">{{ p.title }}</div>
+            <div class="text-secondary mt-2">{{ p.desc }}</div>
+            <div class="mt-3 small text-secondary"><span class="fw-semibold">Stack:</span> {{ p.stack }}</div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+  <div class="mt-4">
+    <a class="btn btn-primary" href="{% url 'contact' %}#quote">Request a Quote</a>
+  </div>
+</div>
+{% endblock %}
