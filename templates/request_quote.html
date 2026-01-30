@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container py-5">
+  <h1 class="fw-bold">Request a Quote</h1>
+  <p class="text-secondary">Fill out the form below and I’ll get back to you with a plan and estimate.</p>
+  {% if submitted %}
+    <div class="alert alert-success">Thank you! Your request has been received.</div>
+  {% else %}
+    <form method="post" class="vstack gap-3">
+      {% csrf_token %}
+      <div class="row g-3">
+        <div class="col-md-6">{{ form.name.label_tag }}{{ form.name }}</div>
+        <div class="col-md-6">{{ form.email.label_tag }}{{ form.email }}</div>
+      </div>
+      <div>{{ form.details.label_tag }}{{ form.details }}</div>
+      <button class="btn btn-primary btn-lg mt-2" type="submit">Send Request</button>
+    </form>
+  {% endif %}
+</div>
+{% endblock %}

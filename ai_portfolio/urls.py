@@ -16,7 +16,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+
 from core import views
+from core.views_quote import request_quote
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,4 +27,5 @@ urlpatterns = [
     path('portfolio/', views.portfolio, name='portfolio'),
     path('ai-assistant/', views.ai_assistant, name='ai_assistant'),
     path('contact/', views.contact, name='contact'),
+    path('quote/', request_quote, name='request_quote'),
 ]
