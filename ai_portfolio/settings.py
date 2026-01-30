@@ -9,7 +9,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Load .env for local dev (Heroku config vars override env anyway)
 load_dotenv(BASE_DIR / ".env")
 
-DEBUG = os.getenv("DEBUG", "0") == "1"
+DEBUG = os.getenv("DEBUG", "0").lower() in ("1", "true")
 
 # Never commit real secrets; set SECRET_KEY in env / Heroku config vars
 SECRET_KEY = os.getenv("SECRET_KEY", "dev-only-insecure-secret-key")
